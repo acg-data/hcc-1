@@ -1,0 +1,13 @@
+{
+  "name": "healthcareercerts",
+  "version": "1.0.0",
+  "description": "Health Career Certifications Website",
+  "scripts": {
+    "dev": "npx serve HCCERTS -l 5173",
+    "build": "echo 'Static site - no build needed'",
+    "preview": "npx serve HCCERTS -l 5173"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
