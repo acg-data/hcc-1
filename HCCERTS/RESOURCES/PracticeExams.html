@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free MCAT Resources - Health Career Certs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* HCC Palette */
+            --primary-purple: #505baa;
+            --primary-accent: #666ae6;
+            --secondary-cyan: #5ac6ef;
+            --text-dark: #4b5c65;
+            --text-light: #888;
+            --bg-lavender: #cdd2e7;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: rgba(0,0,0,0.6); /* Dark overlay backdrop look */
+            background-image: url('https://placehold.co/1920x1080/4b5c65/ffffff?text=Background+Texture');
+            background-size: cover;
+            background-blend-mode: multiply;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main Card Container */
+        .signup-card {
+            background-color: var(--white);
+            width: 100%;
+            max-width: 900px;
+            min-height: 600px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-radius: 4px; /* Sharp corners like screenshot, or slight radius */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Left Side - Image */
+        .card-image {
+            background-image: url('https://placehold.co/600x800/cdd2e7/505baa?text=Stethoscope+%26+Books');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Right Side - Form */
+        .card-content {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--white);
+        }
+
+        /* Close Button (Decorative since it's a standalone page now) */
+        .close-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #ccc;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+        .close-icon:hover { color: var(--text-dark); }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            font-size: 1rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: 0.3s;
+            background: transparent;
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .form-control:focus {
+            border-bottom-color: var(--secondary-cyan);
+        }
+
+        /* Button */
+        .btn-submit {
+            background-color: var(--primary-purple); /* Replaces the Red */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Privacy Text */
+        .privacy-text {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .signup-card {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            .card-image {
+                height: 200px; /* Shows image on top on mobile */
+            }
+            .card-content {
+                padding: 40px 30px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-card">
+        <div class="close-icon">&times;</div>
+
+        <div class="card-image">
+            </div>
+
+        <div class="card-content">
+            <h1>Free MCAT<br>Study<br>Resources<br>and Full<br>MCAT<br>Practice<br>Exams</h1>
+
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="First and Last Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email Address" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Send me the list!</button>
+            </form>
+
+            <p class="privacy-text">
+                We respect your privacy. Unsubscribe at anytime.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

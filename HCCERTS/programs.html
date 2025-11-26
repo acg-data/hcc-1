@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses - Health Career Certs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* HCC Palette */
+            --primary-purple: #505baa;
+            --primary-accent: #666ae6;
+            --secondary-cyan: #5ac6ef;
+            --secondary-teal: #50b0d1;
+            --secondary-brown: #9c715c; 
+            --bg-lavender: #cdd2e7;
+            --bg-soft-blue: #cfd2e7;
+            --text-dark: #4b5c65;
+            --white: #ffffff;
+            
+            /* Specific for this page based on screenshot */
+            --hero-bg: #fdf6e3; /* Light warm background similar to the yellow header */
+            --card-shadow: 0 10px 30px rgba(80, 91, 170, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-cyan {
+            background-color: var(--secondary-cyan);
+            color: var(--white);
+        }
+        
+        .btn-cyan:hover {
+            background-color: var(--secondary-teal);
+            transform: translateY(-2px);
+        }
+
+        .btn-purple {
+            background-color: var(--primary-purple);
+            color: var(--white);
+        }
+
+        /* --- Header (Standard) --- */
+        header {
+            background-color: var(--primary-purple);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; }
+        .nav-right a { color: var(--secondary-cyan); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+
+        /* --- Hero Section (Yellow/Gold style from screenshot) --- */
+        .hero {
+            background-color: #f7eecf; /* Muted Gold/Yellow */
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract shapes */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background-color: #eaddb0;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 300px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Organic shape */
+            background-image: url('https://placehold.co/400x400/9c715c/ffffff?text=Happy+Student');
+            background-size: cover;
+            border: 5px solid white;
+        }
+
+        /* --- Course Grid Section --- */
+        .courses-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns like screenshot */
+            gap: 40px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            /* No border, just whitespace layout like original */
+        }
+
+        .course-img-wrapper {
+            background-color: #f0f4f8;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .course-img {
+            width: 100%;
+            height: 220px;
+            background-color: #ddd;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .course-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .course-content p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* --- Integration/Partner Bar --- */
+        .partners-bar {
+            background-color: #f1f5f9;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .partners-bar h3 {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .logos-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 2rem;
+            color: #8898aa;
+        }
+
+        /* --- Logic Model (Dark Green section in original -> Purple here) --- */
+        .logic-section {
+            background-color: var(--primary-purple);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .logic-header {
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .logic-header h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .logic-header .pill { 
+            background-color: var(--secondary-cyan); 
+            color: var(--primary-purple);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* Simulating the flowchart in the screenshot */
+        .roadmap-container {
+            background-color: #eac435; /* Gold background box */
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .roadmap-step {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 20px;
+            border-radius: 8px;
+            width: 22%;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .roadmap-step h4 { color: var(--primary-purple); margin-bottom: 5px; }
+        .roadmap-step p { font-size: 0.8rem; }
+        
+        /* Arrows between steps */
+        .roadmap-step:not(:last-child)::after {
+            content: '\f061'; /* FontAwesome arrow right */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        /* --- Outcomes List --- */
+        .outcomes-section {
+            padding: 80px 0;
+            background-color: #fff9f0; /* Very light cream */
+        }
+
+        .outcome-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .outcome-icon {
+            background-color: var(--secondary-brown);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* --- Form Section (Blue box in original) --- */
+        .form-section {
+            background-color: #e0f2fe; /* Light blue */
+            padding: 80px 0;
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .form-text h2 {
+            color: var(--primary-purple);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .form-fields input, .form-fields select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e2035;
+            color: white;
+            padding: 50px 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .footer-col ul { list-style: none; opacity: 0.7; }
+        .footer-col li { margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .hero-grid, .courses-grid, .form-container, .roadmap-container, .footer-grid {
+                grid-template-columns: 1fr;
+                display: grid;
+            }
+            .roadmap-container { gap: 20px; }
+            .roadmap-step { width: 100%; margin-bottom: 20px; }
+            .roadmap-step::after { content: '\f063'; right: 50%; top: auto; bottom: -25px; transform: translateX(50%); }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i> HealthCareerCerts
+                </div>
+                <div class="nav-links">
+                    <a href="#">All Courses</a>
+                    <a href="#">Career Paths</a>
+                    <a href="#">Tuition</a>
+                </div>
+                <div class="nav-right">
+                    <a href="#">Student Login</a>
+                    <a href="#" class="btn btn-cyan" style="margin-left: 15px;">Enroll Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>The right certification for every career goal.</h1>
+                <p>HealthCareerCerts provides the most up-to-date, NHA-aligned curriculum to help you break into the medical field in under 6 months.</p>
+                <a href="#courses" class="btn btn-purple" style="background-color: var(--secondary-brown);">View Catalog</a>
+            </div>
+            <div class="hero-img"></div>
+        </div>
+    </section>
+
+    <section id="courses" class="courses-section">
+        <div class="container">
+            <div class="courses-grid">
+                
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <div class="course-img" style="background-image: url('https://placehold.co/600x400/505baa/ffffff?text=Medical+Assistant');"></div>
+                    </div>
+                    <div class="container" style="padding-bottom: 30px;">
+                        <div class="course-content">
+                            <h3><i class="fas fa-stethoscope" style="color: var(--secondary-cyan);"></i> Medical Assistant</h3>
+                            <p><strong>CCMA Certification.</strong> The complete package for clinical skills. Learn phlebotomy, EKG, vitals, and patient history taking.</p>
+                            <a href="#" class="btn btn-cyan">Syllabus & Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <div class="course-img" style="background-image: url('https://placehold.co/600x400/505baa/ffffff?text=Phlebotomy');"></div>
+                    </div>
+                    <div class="container" style="padding-bottom: 30px;">
+                        <div class="course-content">
+                            <h3><i class="fas fa-tint" style="color: #e63946;"></i> Phlebotomy Tech</h3>
+                            <p><strong>CPT Certification.</strong> Fast-track your career. Master blood draw techniques, safety protocols, and specimen handling.</p>
+                            <a href="#" class="btn btn-cyan">Syllabus & Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <div class="course-img" style="background-image: url('https://placehold.co/600x400/505baa/ffffff?text=Pharmacy+Tech');"></div>
+                    </div>
+                    <div class="container" style="padding-bottom: 30px;">
+                        <div class="course-content">
+                            <h3><i class="fas fa-pills" style="color: var(--secondary-brown);"></i> Pharmacy Tech</h3>
+                            <p><strong>CPhT Certification.</strong> Work in retail or hospitals. Learn pharmacology, dosage calculations, and inventory management.</p>
+                            <a href="#" class="btn btn-cyan">Syllabus & Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-img-wrapper">
+                        <div class="course-img" style="background-image: url('https://placehold.co/600x400/505baa/ffffff?text=Billing+Coding');"></div>
+                    </div>
+                    <div class="container" style="padding-bottom: 30px;">
+                        <div class="course-content">
+                            <h3><i class="fas fa-laptop-medical" style="color: var(--primary-purple);"></i> Billing & Coding</h3>
+                            <p><strong>CBCS Certification.</strong> The remote work favorite. Master ICD-10 coding, insurance claims, and medical software.</p>
+                            <a href="#" class="btn btn-cyan">Syllabus & Info</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-bar">
+        <div class="container">
+            <h3>Seamless integrations with your future career</h3>
+            <div class="logos-grid">
+                <i class="fas fa-hospital"></i>
+                <i class="fas fa-clinic-medical"></i>
+                <i class="fas fa-ambulance"></i>
+                <i class="fas fa-heartbeat"></i>
+                <i class="fas fa-university"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="logic-section">
+        <div class="container">
+            <div class="logic-header">
+                <span class="pill">HOW IT WORKS</span>
+                <h2>Understanding the Certification Roadmap</h2>
+                <p>Learning shouldn't be confusing. Our roadmap is designed to get you from enrollment to employment in 4 simple steps.</p>
+            </div>
+
+            <div class="roadmap-container">
+                <div class="roadmap-step">
+                    <h4>1. Enroll</h4>
+                    <p>Instant access to mobile-friendly coursework.</p>
+                </div>
+                <div class="roadmap-step">
+                    <h4>2. Learn</h4>
+                    <p>Interactive simulations and live instructor support.</p>
+                </div>
+                <div class="roadmap-step">
+                    <h4>3. Externship</h4>
+                    <p>We place you in a local clinic for real hours.</p>
+                </div>
+                <div class="roadmap-step">
+                    <h4>4. Hired</h4>
+                    <p>Resume review and direct connection to partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="outcomes-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--text-dark);">Here are the outcomes you can expect</h2>
+            
+            <div class="outcome-item">
+                <div class="outcome-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div>
+                    <h4 style="margin-bottom: 5px;">Increase earning potential</h4>
+                    <p>Certified professionals earn on average 25% more than non-certified staff in the healthcare sector.</p>
+                </div>
+            </div>
+
+            <div class="outcome-item">
+                <div class="outcome-icon"><i class="fas fa-clock"></i></div>
+                <div>
+                    <h4 style="margin-bottom: 5px;">Finish in months, not years</h4>
+                    <p>Unlike a 2-year degree, our focused programs are designed to be completed in 3 to 6 months part-time.</p>
+                </div>
+            </div>
+
+            <div class="outcome-item">
+                <div class="outcome-icon"><i class="fas fa-certificate"></i></div>
+                <div>
+                    <h4 style="margin-bottom: 5px;">National Recognition</h4>
+                    <p>Pass the NHA exam and carry a credential that is recognized in all 50 states.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="container form-container">
+            <div class="form-text">
+                <h2>Request a Course Guide</h2>
+                <p>Not sure which path is right for you? Fill out the form to get a detailed syllabus for all programs and a free career counseling session.</p>
+                <img src="https://placehold.co/400x200/e0f2fe/505baa?text=Guide+Preview" style="margin-top: 20px; border-radius: 10px; width: 100%;">
+            </div>
+            <div class="form-fields">
+                <form>
+                    <label>First Name</label>
+                    <input type="text" placeholder="Jane">
+                    
+                    <label>Last Name</label>
+                    <input type="text" placeholder="Doe">
+                    
+                    <label>Email Address</label>
+                    <input type="email" placeholder="jane@example.com">
+                    
+                    <label>Interested Program</label>
+                    <select>
+                        <option>Medical Assistant</option>
+                        <option>Phlebotomy</option>
+                        <option>Pharmacy Tech</option>
+                        <option>Billing & Coding</option>
+                    </select>
+                    
+                    <button type="button" class="btn btn-purple" style="width: 100%; margin-top: 10px;">Get the Guide</button>
+                    <p style="font-size: 0.7rem; margin-top: 15px; opacity: 0.7;">By clicking, you agree to receive email updates.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;"><i class="fas fa-heartbeat"></i> HCC</h4>
+                    <ul><li>Questions? Call us at 555-0123</li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li>About Us</li>
+                        <li>Careers</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li>Blog</li>
+                        <li>Student Portal</li>
+                        <li>Accreditation</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li>Privacy</li>
+                        <li>Terms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

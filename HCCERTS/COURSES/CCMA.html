@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCMA Certification - Health Career Certs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* HCC Palette */
+            --primary-purple: #505baa;
+            --primary-accent: #666ae6;
+            --secondary-cyan: #5ac6ef;
+            --secondary-teal: #50b0d1;
+            --secondary-brown: #9c715c;
+            --bg-lavender: #cdd2e7;
+            --bg-light-blue: #eef8fc;
+            --bg-cream: #f9f9f9;
+            --text-dark: #4b5c65;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-cyan {
+            background-color: var(--secondary-cyan);
+            color: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn-cyan:hover {
+            background-color: var(--secondary-teal);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-purple);
+            border: 2px solid var(--primary-purple);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-lavender);
+        }
+
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--primary-purple);
+            padding: 15px 0;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; color: white; }
+        .logo { font-size: 1.4rem; font-weight: 700; display: flex; gap: 10px; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-color: var(--primary-accent); /* Bright Purple */
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract shape top left */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+
+        .hero-list {
+            margin-top: 20px;
+            list-style: none;
+        }
+        
+        .hero-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .hero-list i { color: var(--secondary-cyan); }
+
+        /* --- Feature 1 (Image Left, Text Right) --- */
+        .feature-section {
+            padding: 100px 0;
+            background-color: var(--bg-cream);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .feature-img-circle {
+            width: 100%;
+            height: 400px;
+            background-image: url('https://placehold.co/500x500/505baa/ffffff?text=CCMA+Student');
+            background-size: cover;
+            border-radius: 50% 50% 50% 0; /* Organic shape */
+            border: 5px solid var(--white);
+            box-shadow: 20px 20px 0 var(--bg-lavender);
+        }
+
+        .feature-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .check-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .check-icon {
+            background-color: var(--secondary-cyan);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- Feature 2 (Teal Card Style) --- */
+        .feature-card-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .teal-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .teal-card-ui {
+            background-color: var(--secondary-teal); /* Teal Background */
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ui-float {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: absolute;
+            width: 250px;
+        }
+
+        /* --- Feature 3 (Support/Trust) --- */
+        .support-section {
+            padding: 100px 0;
+            background-color: #fffbf0;
+        }
+
+        .support-img {
+            border-radius: 15px;
+            background-image: url('https://placehold.co/600x400/9c715c/ffffff?text=Clinical+Exam');
+            background-size: cover;
+            height: 350px;
+            position: relative;
+        }
+
+        .icon-stack {
+            position: absolute;
+            left: -20px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .stack-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-cyan);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testi-card {
+            background-color: var(--bg-light-blue);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            position: relative;
+        }
+
+        .quote-box {
+            background-color: var(--secondary-brown); /* Accent color */
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        /* --- Diagram / Platform Section --- */
+        .diagram-section {
+            background-color: #f4faff;
+            padding: 80px 0;
+        }
+
+        .diagram-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .diagram-graphic {
+            background-color: #e0effc;
+            height: 300px;
+            border-radius: 20px;
+            background-image: url('https://placehold.co/400x300/e0effc/505baa?text=CCMA+Role+Diagram');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* --- Form Section --- */
+        .form-section {
+            padding: 80px 0;
+            background-color: #fdf8f4;
+        }
+
+        .form-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-content h2 { color: var(--secondary-brown); margin-bottom: 20px; }
+        
+        .hcc-form input, .hcc-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #1e2035;
+            color: white;
+            padding: 60px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-card, .feature-grid, .teal-card-grid, .testi-grid, .diagram-container, .form-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-section { padding: 40px 20px; }
+            .hero-card { padding: 30px; }
+            .teal-card-ui { order: 2; height: 300px; }
+            .support-img { order: 2; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-heartbeat"></i> HealthCareerCerts</div>
+                <div class="nav-links">
+                    <a href="#">Courses</a>
+                    <a href="#">Certifications</a>
+                    <a href="#">Career Guide</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-card">
+                <div class="hero-text">
+                    <div style="color: var(--secondary-cyan); font-weight: bold; margin-bottom: 10px;">
+                        <i class="fas fa-certificate"></i> MOST POPULAR PROGRAM
+                    </div>
+                    <h1>From enrollment to Certified Medical Assistant in months.</h1>
+                    <p>Launch your career as a CCMA. Our accredited program combines 100% online theory with a guaranteed clinical externship to get you hired fast.</p>
+                    <div style="margin-top: 25px;">
+                        <a href="#enroll" class="btn btn-cyan">Start for $0 Down</a>
+                        <a href="#" class="btn btn-outline">Download Syllabus</a>
+                    </div>
+                </div>
+                <div class="hero-details">
+                    <img src="https://placehold.co/500x300/f8f9fa/505baa?text=CCMA+Course+Dashboard" style="width: 100%; border-radius: 10px; border: 1px solid #eee;">
+                    <ul class="hero-list">
+                        <li><i class="fas fa-check-circle"></i> NHA Exam Voucher Included</li>
+                        <li><i class="fas fa-check-circle"></i> Clinical Externship Placement</li>
+                        <li><i class="fas fa-check-circle"></i> Job Placement Assistance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-img-wrapper">
+                <div class="feature-img-circle"></div>
+            </div>
+            <div class="feature-text">
+                <h2>Study at home. Practice in the clinic.</h2>
+                <p style="margin-bottom: 30px;">The CCMA program offers the ultimate flexibility. Master medical terminology and procedures online, then gain hands-on experience in a local doctor's office.</p>
+                
+                <div class="check-item">
+                    <div class="check-icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <h4>Self-Paced Learning</h4>
+                        <p style="font-size: 0.9rem;">No mandatory class times. Log in whenever it fits your schedule—morning, noon, or night.</p>
+                    </div>
+                </div>
+
+                <div class="check-item">
+                    <div class="check-icon"><i class="fas fa-user-nurse"></i></div>
+                    <div>
+                        <h4>Hands-on Externship</h4>
+                        <p style="font-size: 0.9rem;">We partner with clinics nationwide to ensure you get the 160 clinical hours required for certification.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-card-section">
+        <div class="container teal-card-grid">
+            <div class="feature-text">
+                <h2>More in-demand skills, higher earning potential</h2>
+                <p style="margin-bottom: 30px;">Certified Clinical Medical Assistants are the heartbeat of modern healthcare, trained in both front-office and back-office duties.</p>
+
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--primary-purple);"><i class="fas fa-stethoscope"></i></div>
+                    <div>
+                        <h4>Clinical Procedures</h4>
+                        <p style="font-size: 0.9rem;">Taking vital signs, phlebotomy (blood draws), EKG administration, and patient history.</p>
+                    </div>
+                </div>
+
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--primary-purple);"><i class="fas fa-laptop-medical"></i></div>
+                    <div>
+                        <h4>Administrative Tasks</h4>
+                        <p style="font-size: 0.9rem;">Electronic Health Records (EHR), scheduling, billing basics, and patient intake.</p>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn btn-cyan">View Full Curriculum</a>
+            </div>
+            
+            <div class="teal-card-ui">
+                <div class="ui-float" style="top: 40px; left: 40px; transform: rotate(-3deg);">
+                    <div style="font-weight: bold; font-size: 0.8rem; margin-bottom: 5px;"><i class="fas fa-user-check" style="color:green"></i> Patient Intake</div>
+                    <div style="font-size: 0.7rem; color: #666;">BP: 120/80 &bull; HR: 72bpm</div>
+                    <div style="background:#eee; height: 6px; width: 100%; border-radius: 4px; margin-top:5px;">
+                        <div style="background:var(--secondary-cyan); width: 80%; height: 100%; border-radius: 4px;"></div>
+                    </div>
+                </div>
+                <div class="ui-float" style="bottom: 50px; right: 40px; transform: rotate(2deg);">
+                    <div style="display:flex; gap: 10px; align-items: center;">
+                        <div style="background:var(--secondary-brown); width:35px; height:35px; border-radius:50%; color:white; display:flex; align-items:center; justify-content:center;"><i class="fas fa-award"></i></div>
+                        <div style="font-size: 0.8rem;"><strong>CCMA Certified</strong><br>Status: Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support-section">
+        <div class="container feature-grid">
+            <div class="support-img">
+                <div class="icon-stack">
+                    <div class="stack-icon"><i class="fas fa-file-signature"></i></div>
+                    <div class="stack-icon" style="background: var(--secondary-cyan); color: white;"><i class="fas fa-hospital"></i></div>
+                    <div class="stack-icon"><i class="fas fa-graduation-cap"></i></div>
+                </div>
+            </div>
+            <div class="feature-text">
+                <h2>Nationally recognized certification</h2>
+                <p style="margin-bottom: 25px;">Our program is specifically aligned to the National Healthcareer Association (NHA) standards. We prepare you to pass the exam on your first try.</p>
+                
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--secondary-brown);"><i class="fas fa-check"></i></div>
+                    <div>
+                        <h4>Exam Voucher Included</h4>
+                        <p style="font-size: 0.9rem;">The cost of the NHA CCMA exam is included in your tuition. No hidden fees.</p>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--secondary-brown);"><i class="fas fa-chart-line"></i></div>
+                    <div>
+                        <h4>Job Readiness</h4>
+                        <p style="font-size: 0.9rem;">From resume building to interview prep, we help you transition from student to employed professional.</p>
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-cyan">See Accreditation</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Graduates are working in top clinics nationwide</h2>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="quote-box"><i class="fas fa-quote-left"></i></div>
+                    <p>"I was nervous about the online format, but the video demonstrations made learning vital signs easy. I passed my NHA exam last week!"</p>
+                    <p style="margin-top: 20px; font-weight: bold; color: var(--secondary-cyan);">— Maria S., CCMA</p>
+                </div>
+                <div class="testi-card">
+                    <div class="quote-box"><i class="fas fa-quote-left"></i></div>
+                    <p>"The externship was the best part. I got to use my skills on real patients, and the doctor offered me a job before I finished my hours."</p>
+                    <p style="margin-top: 20px; font-weight: bold; color: var(--secondary-cyan);">— James T., CCMA</p>
+                </div>
+                <div class="testi-card">
+                    <div class="quote-box"><i class="fas fa-quote-left"></i></div>
+                    <p>"Being able to study while working my retail job was a lifesaver. Now I have a career with real benefits."</p>
+                    <p style="margin-top: 20px; font-weight: bold; color: var(--secondary-cyan);">— Ashley K., CCMA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="diagram-section">
+        <div class="container diagram-container">
+            <div class="diagram-text">
+                <h2>One certification, diverse workplaces</h2>
+                <p>A CCMA certification is your passport to the medical field. Graduates work in private practices, large hospitals, urgent care centers, and specialty clinics like dermatology or cardiology.</p>
+                <a href="#" class="btn btn-cyan" style="margin-top: 20px;">Explore Career Paths</a>
+            </div>
+            <div class="diagram-graphic">
+                </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="enroll">
+        <div class="container">
+            <div class="form-layout">
+                <div class="form-content">
+                    <h2>Request Program Guide</h2>
+                    <p>Get the full breakdown of the Certified Clinical Medical Assistant program, including tuition plans, externship details, and upcoming start dates.</p>
+                </div>
+                <div class="hcc-form">
+                    <form>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <input type="text" placeholder="First Name">
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <input type="email" placeholder="Email Address">
+                        <select>
+                            <option>Program: CCMA (Medical Assistant)</option>
+                            <option>Phlebotomy Tech</option>
+                            <option>Pharmacy Tech</option>
+                        </select>
+                        <button type="button" class="btn btn-cyan" style="width: 100%;">Get Free Info Packet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-heartbeat"></i> HealthCareerCerts</p>
+            <p style="opacity: 0.7; margin-top: 10px;">&copy; 2025 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

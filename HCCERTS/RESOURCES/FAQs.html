@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Health Career Certs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* HCC Palette */
+            --primary-purple: #505baa;
+            --primary-accent: #666ae6;
+            --secondary-cyan: #5ac6ef;
+            --secondary-teal: #50b0d1;
+            --secondary-brown: #9c715c;
+            --bg-lavender: #cdd2e7;
+            --bg-light-blue: #eef8fc;
+            --bg-cream: #fcfbf7;
+            --text-dark: #4b5c65;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px; /* Slightly narrower for reading */
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-cyan {
+            background-color: var(--secondary-cyan);
+            color: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn-cyan:hover {
+            background-color: var(--secondary-teal);
+            transform: translateY(-2px);
+        }
+
+        .btn-purple {
+            background-color: var(--primary-purple);
+            color: white;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 700; display: flex; gap: 10px; align-items: center; color: var(--primary-purple); }
+        .nav-links a { color: var(--text-dark); text-decoration: none; margin-left: 20px; font-size: 0.9rem; font-weight: 500; }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-color: var(--bg-light-blue);
+            padding: 80px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary-purple);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        /* --- FAQ Styles --- */
+        .faq-section {
+            padding: 80px 0;
+            background-color: var(--bg-cream);
+        }
+
+        .faq-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--secondary-brown);
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: var(--text-dark);
+            transition: background 0.2s;
+            background-color: white;
+        }
+        .accordion-header:hover { background-color: #fdfbf7; }
+
+        .accordion-header i {
+            color: var(--secondary-cyan);
+            transition: transform 0.3s;
+        }
+
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            background-color: white;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px; /* Arbitrary max height for transition */
+            padding-bottom: 25px;
+            border-top: 1px solid #f5f5f5;
+        }
+
+        /* --- Table Styles --- */
+        .exam-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .exam-table th, .exam-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .exam-table th {
+            background-color: var(--primary-purple);
+            color: white;
+        }
+        .exam-table tr:last-child td { border-bottom: none; }
+
+        /* Footer */
+        footer {
+            background-color: #1e2035;
+            color: white;
+            padding: 60px 0 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col a { color: white; opacity: 0.8; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-heartbeat"></i> HealthCareerCerts</div>
+                <div class="nav-links">
+                    <a href="#">Courses</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <a href="#" class="btn btn-cyan" style="padding: 8px 20px;">Login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Got Questions? We've Got Answers.</h1>
+            <p>Everything you need to know about our programs, tuition, externships, and getting hired.</p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            
+            <div class="faq-category">
+                <h2 class="category-title">Tuition & Financials</h2>
+                
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        What's included in your program tuition? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Your tuition covers everything you need to succeed:</p>
+                        <ul style="list-style: inside; margin-top: 10px;">
+                            <li><strong>1-on-1 Zoom Meetings:</strong> Direct support from instructors.</li>
+                            <li><strong>Interactive Online Classroom:</strong> Quizzes, flashcards, and study materials.</li>
+                            <li><strong>NHA Exam Prep:</strong> Comprehensive preparation for the national exam.</li>
+                            <li><strong>Guaranteed Externship:</strong> Placement in a local hospital or clinic.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        How does "100% Tuition Refund" work? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>If you don't land a job in the healthcare industry within 6 months of passing your exam and completing the externship, we will refund your tuition. Conditions apply: you must demonstrate active job searching, maintain communication with our career services, and not decline qualified job offers.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        What Tuition Payment Options Are Available? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We offer two main options:</p>
+                        <ol style="margin-left: 20px;">
+                            <li><strong>Upfront Payment:</strong> Pay in full for maximum savings.</li>
+                            <li><strong>Installment Plans:</strong> Pay in manageable monthly installments over the course of your class.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2 class="category-title">Academics & Exams</h2>
+
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        What's on the CCMA Exam? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The NHA CCMA exam consists of 150 scored questions (plus 30 pretest questions) over 3 hours. Here is the topic breakdown:</p>
+                        
+                        <table class="exam-table">
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Clinical Patient Care</td><td>56%</td></tr>
+                                <tr><td>Foundational Knowledge</td><td>10%</td></tr>
+                                <tr><td>Care Coordination</td><td>8%</td></tr>
+                                <tr><td>Administrative Assisting</td><td>8%</td></tr>
+                                <tr><td>Communication</td><td>8%</td></tr>
+                                <tr><td>Medical Law & Ethics</td><td>5%</td></tr>
+                                <tr><td>Anatomy & Physiology</td><td>5%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        Can I get college credits after I pass my exam? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes! Through the American Council on Education (ACE), passing your exams can earn you credits transferrable to over 2,000 colleges:</p>
+                        <ul>
+                            <li>CCMA: 5 ACE Credits</li>
+                            <li>CPT (Phlebotomy): 2 ACE Credits</li>
+                            <li>CPCT (Patient Care): 1 ACE Credit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2 class="category-title">Externships & Logistics</h2>
+
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        Do you guarantee externship placement? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes! We have a dedicated department that manages placements. We find a hospital or clinic convenient to your location for your hands-on training at no additional fee.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        Are the training programs online or in-person? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>All programs are <strong>100% online</strong> for the didactic portion, allowing you to study at your own pace. This is followed by an optional (but recommended) hands-on externship at a local facility.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color:white; margin-bottom:20px;"><i class="fas fa-heartbeat"></i> HealthCareerCerts</div>
+                    <p>100% Tuition Refund Guarantee if you don't get hired.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>800-270-9399</li>
+                        <li>info@healthcareercerts.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; opacity: 0.5; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                &copy; 2025 HealthCareerCerts. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAccordion(element) {
+            // Optionally close others
+            // const allItems = document.querySelectorAll('.accordion-item');
+            // allItems.forEach(item => {
+            //     if (item !== element) {
+            //         item.classList.remove('active');
+            //     }
+            // });
+            
+            // Toggle clicked
+            element.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>

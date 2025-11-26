@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Career Certs - Get Certified & Hired</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Palette from Coolors */
+            --primary-main: #505baa;       /* Royal Purple - Headers/Hero */
+            --primary-accent: #5ac6ef;     /* Cyan - Highlights */
+            --primary-btn: #666ae6;        /* Bright Purple - Buttons */
+            --secondary-brown: #9c715c;    /* Brown - Subtle Accents/Icons */
+            --bg-white: #ffffff;           /* White - Main Background */
+            --bg-lavender: #cdd2e7;        /* Lavender - Alt Sections */
+            --bg-light-mix: #cfd2e7;       /* Soft Blue/Purple - Stats */
+            --btn-teal: #50b0d1;           /* Teal - Secondary Buttons */
+            --text-slate: #4b5c65;         /* Dark Slate - Main Text */
+            --text-white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-slate);
+            line-height: 1.6;
+        }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-btn);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 106, 230, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-main);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-white);
+            border: 2px solid var(--text-white);
+            margin-left: 10px;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .btn-card {
+            background-color: var(--primary-accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            width: 100%;
+            transition: 0.2s;
+        }
+        
+        .btn-card:hover {
+            background-color: var(--btn-teal);
+        }
+
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--primary-main);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover { color: var(--primary-accent); }
+
+        .nav-actions .login {
+            color: var(--primary-accent);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 600;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-color: var(--primary-main);
+            color: white;
+            padding: 80px 0 100px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 em {
+            font-style: normal;
+            color: var(--primary-accent);
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+
+        .hero-text p {
+            margin-bottom: 30px;
+            font-size: 1.15rem;
+            opacity: 0.95;
+            max-width: 500px;
+        }
+
+        .hero-img {
+            background-color: #eee;
+            height: 420px;
+            border-radius: 20px;
+            position: relative;
+            background-image: url('https://placehold.co/600x400/505baa/ffffff?text=Medical+Student');
+            background-size: cover;
+            border: 4px solid var(--primary-accent);
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.1);
+        }
+
+        /* --- Stats Section --- */
+        .stats {
+            background-color: var(--bg-lavender);
+            padding: 50px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+
+        .stat-item {
+            border-right: 1px solid rgba(75, 92, 101, 0.2);
+            padding-right: 20px;
+        }
+        .stat-item:last-child { border-right: none; }
+
+        .stat-item h3 {
+            font-size: 2.2rem;
+            color: var(--primary-main);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-slate);
+            font-weight: 600;
+        }
+
+        /* --- Features Section (Diagram) --- */
+        .feature-section {
+            padding: 90px 0;
+            background-color: var(--bg-white);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .circle-diagram {
+            width: 100%;
+            height: 400px;
+            background-image: url('https://placehold.co/500x500/fff/505baa?text=Career+Pathway+Diagram');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .feature-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-main);
+            margin-bottom: 20px;
+        }
+
+        .feature-text p {
+            margin-bottom: 30px;
+            color: var(--text-slate);
+            font-size: 1.05rem;
+        }
+
+        /* --- Features Section (Speed/Online) --- */
+        .ai-section {
+            padding: 90px 0;
+            background-color: #f8f9fc; /* Very light tint */
+        }
+
+        .ai-img {
+            width: 100%;
+            height: 350px;
+            background-image: url('https://placehold.co/600x400/5ac6ef/ffffff?text=Online+Portal+UI');
+            background-size: cover;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(80, 91, 170, 0.15);
+        }
+
+        .badge-new {
+            background-color: var(--secondary-brown);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* --- Tabbed Section (Programs) --- */
+        .tabs-section {
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-lavender) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .tab-header h2 {
+            color: var(--primary-main);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .tabs-nav {
+            display: inline-flex;
+            background: white;
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-slate);
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-main);
+            color: white;
+        }
+
+        .tab-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            text-align: left;
+            align-items: center;
+        }
+        
+        .tab-text ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- Personas Section (Purple) --- */
+        .personas {
+            background-color: var(--primary-main);
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .personas h2 {
+            color: white;
+            margin-bottom: 60px;
+            font-size: 2.2rem;
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .persona-card {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 40px 25px;
+            color: white;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .persona-card:hover {
+            transform: translateY(-8px);
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .persona-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-brown);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .persona-card h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .persona-card p { font-size: 0.95rem; margin-bottom: 25px; opacity: 0.9; line-height: 1.6; }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            padding: 90px 0;
+            background-color: var(--bg-white);
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            color: var(--text-slate);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testi-card {
+            background-color: var(--bg-light-mix);
+            padding: 35px;
+            border-radius: 16px;
+            text-align: left;
+            position: relative;
+        }
+
+        .quote-icon {
+            background-color: var(--primary-accent);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .testi-card p {
+            font-style: italic;
+            color: var(--text-slate);
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+        
+        .testi-link {
+             color: var(--primary-main);
+             text-decoration: none;
+             font-weight: 700;
+             font-size: 0.9rem;
+        }
+
+        /* --- Solutions Pills --- */
+        .solutions-pills {
+            background-color: var(--bg-lavender);
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .solutions-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .pill {
+            background: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--primary-main);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+        
+        .pill:hover {
+            border-color: var(--primary-main);
+            transform: scale(1.05);
+        }
+
+        /* --- Privacy / Accreditation --- */
+        .privacy {
+            background-color: #eefcfd; /* Very light cyan mix */
+            padding: 50px;
+            margin: 50px auto;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            border: 1px solid var(--primary-accent);
+        }
+
+        .privacy-text { max-width: 65%; }
+        .privacy-text h3 { margin-bottom: 12px; color: var(--primary-main); }
+        .privacy-badge { 
+            background: white; 
+            padding: 15px 30px; 
+            border: 2px solid var(--text-slate); 
+            border-radius: 10px; 
+            font-weight: bold;
+            text-align: center;
+            color: var(--text-slate);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-slate); /* Using the dark slate from palette */
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+
+        .footer-col ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-col ul li a:hover { opacity: 1; }
+        
+        .newsletter input {
+            padding: 12px;
+            border-radius: 4px;
+            border: none;
+            margin-right: 5px;
+            width: 65%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-grid, .feature-grid, .stats-grid, .tab-content, .persona-grid, .testi-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-img, .ai-img, .circle-diagram { height: 250px; }
+            .nav-links { display: none; }
+            .privacy { flex-direction: column; text-align: center; gap: 20px; }
+            .privacy-text { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i> HealthCareerCerts
+                </div>
+                <div class="nav-links">
+                    <a href="#">Programs <i class="fas fa-chevron-down"></i></a>
+                    <a href="#">Certification</a>
+                    <a href="#">Career Services</a>
+                    <a href="#">Tuition</a>
+                    <a href="#">About Us</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="#" class="login">Student Portal</a>
+                    <a href="#" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>The trusted path to your new <em>healthcare</em> career.</h1>
+                <p>Start working in months, not years. Affordable, accredited, and self-paced certification programs designed to get you hired.</p>
+                <a href="#" class="btn btn-primary">Explore Programs</a>
+                <a href="#" class="btn btn-outline">Free Career Guide</a>
+            </div>
+            <div class="hero-img">
+                </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>92%</h3>
+                <p>NHA Exam Pass Rate (National Average)</p>
+            </div>
+            <div class="stat-item">
+                <h3>< 6 Mos</h3>
+                <p>Average time to complete certification</p>
+            </div>
+            <div class="stat-item">
+                <h3>$45k+</h3>
+                <p>Average starting salary for certified pros</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="circle-diagram">
+                </div>
+            <div class="feature-text">
+                <h2>The complete ecosystem for your medical success</h2>
+                <p>HealthCareerCerts isn't just a course; it's a comprehensive career launchpad. From interactive learning modules to externship placement and resume building.</p>
+                <a href="#" class="btn btn-primary">How it works</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-section ai-section">
+        <div class="container feature-grid">
+            <div class="feature-text">
+                <span class="badge-new">FLEXIBLE LEARNING</span>
+                <h2>Certification on your schedule</h2>
+                <p>Our mobile-friendly platform allows you to study anatomy, physiology, and procedures whenever you have time. No mandatory login times, just progress.</p>
+                <a href="#" class="btn btn-primary">See the platform</a>
+            </div>
+            <div class="ai-img">
+                </div>
+        </div>
+    </section>
+
+    <section class="tabs-section">
+        <div class="container">
+            <div class="tab-header">
+                <h2>In-demand programs for a stable future</h2>
+                <p>Choose a specialty that fits your skills and salary goals.</p>
+            </div>
+            
+            <div class="tabs-nav">
+                <button class="tab-btn active">Medical Assistant</button>
+                <button class="tab-btn">Phlebotomy Tech</button>
+                <button class="tab-btn">Pharmacy Tech</button>
+                <button class="tab-btn">Billing & Coding</button>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-text">
+                    <h3><i class="fas fa-stethoscope" style="color:var(--secondary-brown)"></i> Clinical Medical Assistant</h3>
+                    <p>Become the heartbeat of the clinic. Assist doctors, take vitals, and manage patient care.</p>
+                    <ul style="list-style: none; margin: 20px 0; color: var(--text-slate);">
+                        <li><i class="fas fa-check-circle" style="color: var(--primary-main)"></i> Includes CCMA Exam Voucher</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--primary-main)"></i> Clinical Externship Included</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--primary-main)"></i> Job placement support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">View CCMA Syllabus</a>
+                </div>
+                <div class="ai-img" style="height: 300px; background-image: url('https://placehold.co/600x400/cdd2e7/505baa?text=Medical+Assistant+Class');">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="personas">
+        <div class="container">
+            <h2>Who is Health Career Certs for?</h2>
+            <div class="persona-grid">
+                <div class="persona-card">
+                    <div class="persona-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Career Changers</h3>
+                    <p>Ready to leave retail or food service? Step into a stable, respected medical role fast.</p>
+                    <a href="#" class="btn-card">Get started</a>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>HS Graduates</h3>
+                    <p>Skip the debt of a 4-year degree. Get certified and start earning a real salary in months.</p>
+                    <a href="#" class="btn-card">Get started</a>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-icon"><i class="fas fa-hospital-user"></i></div>
+                    <h3>Employers</h3>
+                    <p>Upskill your current staff with our accredited training programs for clinics and hospitals.</p>
+                    <a href="#" class="btn-card">Partner with us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Our graduates are working in top hospitals and clinics nationwide</h2>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p>"The self-paced aspect saved me. I could work my retail job while studying, and now I'm a full-time Phlebotomist."</p>
+                    <a href="#" class="testi-link">- Sarah J., CPT</a>
+                </div>
+                <div class="testi-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p>"I was nervous about the national exam, but the prep materials here were exactly what was on the test."</p>
+                    <a href="#" class="testi-link">- Michael T., CCMA</a>
+                </div>
+                <div class="testi-card">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p>"The externship placement was seamless. I actually got hired by the clinic where I did my hours!"</p>
+                    <a href="#" class="testi-link">- Jessica R., Pharm Tech</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions-pills">
+        <div class="container">
+            <h3>Features included in every program</h3>
+            <div class="solutions-grid">
+                <div class="pill"><i class="fas fa-laptop-medical"></i> 100% Online Theory</div>
+                <div class="pill"><i class="fas fa-user-nurse"></i> Clinical Externships</div>
+                <div class="pill"><i class="fas fa-certificate"></i> National Certification</div>
+                <div class="pill"><i class="fas fa-comments-dollar"></i> Career Coaching</div>
+                <div class="pill"><i class="fas fa-mobile-alt"></i> Mobile Access</div>
+                <div class="pill"><i class="fas fa-shield-alt"></i> Money-Back Guarantee</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="privacy">
+            <div class="privacy-text">
+                <h3>Fully Accredited & Recognized</h3>
+                <p>We prepare you for exams by the NHA (National Healthcareer Association) and AMCA. Your certification will be recognized by employers across the entire United States.</p>
+                <div style="margin-top: 20px;">
+                    <a href="#" class="btn btn-primary" style="font-size: 0.8rem; padding: 10px 20px;">View Accreditations</a>
+                </div>
+            </div>
+            <div class="privacy-badge">
+                <i class="fas fa-award" style="font-size: 2rem; color: var(--secondary-brown); margin-bottom: 5px;"></i><br>
+                NHA & AMCA<br>ALIGNED
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <i class="fas fa-heartbeat"></i> HealthCareerCerts
+                </div>
+                <p style="margin-bottom: 20px; font-size: 0.85rem; opacity: 0.7;">Subscribe for tuition discounts</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter your email">
+                    <button class="btn btn-primary" style="padding: 10px 15px;">Go</button>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#">Medical Assistant</a></li>
+                    <li><a href="#">Phlebotomy</a></li>
+                    <li><a href="#">Pharmacy Tech</a></li>
+                    <li><a href="#">Billing & Coding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Students</h4>
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Career Services</a></li>
+                    <li><a href="#">Externships</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accreditation</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

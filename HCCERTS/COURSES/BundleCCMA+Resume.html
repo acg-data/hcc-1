@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCMA + Application Editing Bundle - Health Career Certs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* HCC Palette */
+            --primary-purple: #505baa;
+            --primary-accent: #666ae6;
+            --secondary-cyan: #5ac6ef;
+            --secondary-teal: #50b0d1;
+            --secondary-brown: #9c715c;
+            --bg-lavender: #cdd2e7;
+            --bg-light-blue: #eef8fc;
+            --bg-cream: #f9f9f9;
+            --text-dark: #4b5c65;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-cyan {
+            background-color: var(--secondary-cyan);
+            color: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn-cyan:hover {
+            background-color: var(--secondary-teal);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-purple);
+            border: 2px solid var(--primary-purple);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-lavender);
+        }
+
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--primary-purple);
+            padding: 15px 0;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; color: white; }
+        .logo { font-size: 1.4rem; font-weight: 700; display: flex; gap: 10px; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-color: var(--primary-accent); /* Bright Purple */
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract shape top left */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+
+        .hero-list {
+            margin-top: 20px;
+            list-style: none;
+        }
+        
+        .hero-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .hero-list i { color: var(--secondary-cyan); }
+
+        /* --- Feature 1 (Image Left, Text Right) --- */
+        .feature-section {
+            padding: 100px 0;
+            background-color: var(--bg-cream);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .feature-img-circle {
+            width: 100%;
+            height: 400px;
+            background-image: url('https://placehold.co/500x500/9c715c/ffffff?text=Clinical+%2B+Editing');
+            background-size: cover;
+            border-radius: 50% 50% 50% 0; /* Organic shape */
+            border: 5px solid var(--white);
+            box-shadow: 20px 20px 0 var(--bg-lavender);
+        }
+
+        .feature-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .check-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .check-icon {
+            background-color: var(--secondary-cyan);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- Feature 2 (Teal Card Style) --- */
+        .feature-card-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .teal-card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .teal-card-ui {
+            background-color: var(--secondary-teal); /* Teal Background */
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ui-float {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: absolute;
+            width: 250px;
+        }
+
+        /* --- Feature 3 (Support/Career) --- */
+        .support-section {
+            padding: 100px 0;
+            background-color: #fffbf0;
+        }
+
+        .support-img {
+            border-radius: 15px;
+            background-image: url('https://placehold.co/600x400/505baa/ffffff?text=Admissions+Success');
+            background-size: cover;
+            height: 350px;
+            position: relative;
+        }
+
+        .icon-stack {
+            position: absolute;
+            left: -20px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .stack-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-cyan);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testi-card {
+            background-color: var(--bg-light-blue);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            position: relative;
+        }
+
+        .quote-box {
+            background-color: var(--secondary-brown); /* Accent color */
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        /* --- Diagram / Platform Section --- */
+        .diagram-section {
+            background-color: #f4faff;
+            padding: 80px 0;
+        }
+
+        .diagram-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .diagram-graphic {
+            background-color: #e0effc;
+            height: 300px;
+            border-radius: 20px;
+            background-image: url('https://placehold.co/400x300/e0effc/505baa?text=Applicant+Success+Cycle');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* --- Form Section --- */
+        .form-section {
+            padding: 80px 0;
+            background-color: #fdf8f4;
+        }
+
+        .form-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-content h2 { color: var(--secondary-brown); margin-bottom: 20px; }
+        
+        .hcc-form input, .hcc-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #1e2035;
+            color: white;
+            padding: 60px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-card, .feature-grid, .teal-card-grid, .testi-grid, .diagram-container, .form-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-section { padding: 40px 20px; }
+            .hero-card { padding: 30px; }
+            .teal-card-ui { order: 2; height: 300px; }
+            .support-img { order: 2; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-heartbeat"></i> HealthCareerCerts</div>
+                <div class="nav-links">
+                    <a href="#">Bundles</a>
+                    <a href="#">Tuition</a>
+                    <a href="#">Career Services</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-card">
+                <div class="hero-text">
+                    <div style="color: var(--secondary-cyan); font-weight: bold; margin-bottom: 10px;">
+                        <i class="fas fa-laptop-medical"></i> THE COMPLETE APPLICANT PACKAGE
+                    </div>
+                    <h1>CCMA Certification + Application Editing Suite</h1>
+                    <p>Build your resume with our accredited CCMA program, then let our experts perfect your Resume, Cover Letter, and Personal Statement. The ultimate bundle for Pre-Health students.</p>
+                    <div style="margin-top: 25px;">
+                        <a href="#enroll" class="btn btn-cyan">Enroll for $2,650</a>
+                        <a href="#" class="btn btn-outline">See Bundle Details</a>
+                    </div>
+                </div>
+                <div class="hero-details">
+                    <img src="https://placehold.co/500x300/f8f9fa/505baa?text=Certification+%2B+Editing+Bundle" style="width: 100%; border-radius: 10px; border: 1px solid #eee;">
+                    <ul class="hero-list">
+                        <li><i class="fas fa-check-circle"></i> Save $200 with Bundle Pricing</li>
+                        <li><i class="fas fa-check-circle"></i> NHA CCMA Exam Voucher Included</li>
+                        <li><i class="fas fa-check-circle"></i> Professional Application Editing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <div class="container feature-grid">
+            <div class="feature-img-wrapper">
+                <div class="feature-img-circle"></div>
+            </div>
+            <div class="feature-text">
+                <h2>Phase 1: Build a Strong Resume</h2>
+                <p style="margin-bottom: 30px;">You can't have a great application without great experience. Our CCMA course gets you certified and working, providing the clinical hours (PCE) schools demand.</p>
+                
+                <div class="check-item">
+                    <div class="check-icon"><i class="fas fa-user-nurse"></i></div>
+                    <div>
+                        <h4>Certified Clinical Medical Assistant</h4>
+                        <p style="font-size: 0.9rem;">Complete the 16-module course and hands-on externship to become NHA certified in as little as 8 weeks.</p>
+                    </div>
+                </div>
+
+                <div class="check-item">
+                    <div class="check-icon"><i class="fas fa-clinic-medical"></i></div>
+                    <div>
+                        <h4>Hands-on Experience</h4>
+                        <p style="font-size: 0.9rem;">We guarantee placement in a local clinic, giving you the real-world stories you'll write about in your personal statement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-card-section">
+        <div class="container teal-card-grid">
+            <div class="feature-text">
+                <h2>Phase 2: Perfect Your Paperwork</h2>
+                <p style="margin-bottom: 30px;">Once you have the experience, you need to sell it. Our professional editors tailor your documents specifically for medical, PA, and nursing school admissions.</p>
+
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--primary-purple);"><i class="fas fa-file-contract"></i></div>
+                    <div>
+                        <h4>Resume & Cover Letter</h4>
+                        <p style="font-size: 0.9rem;">We ensure your CV highlights your clinical skills and externship achievements in professional, error-free language.</p>
+                    </div>
+                </div>
+
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--primary-purple);"><i class="fas fa-pen-nib"></i></div>
+                    <div>
+                        <h4>Personal Statement Polish</h4>
+                        <p style="font-size: 0.9rem;">Our editors help refine your narrative, ensuring your passion for healthcare shines through clearly and cohesively.</p>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn btn-cyan">View Editing Process</a>
+            </div>
+            
+            <div class="teal-card-ui">
+                <div class="ui-float" style="top: 30px; left: 30px; transform: rotate(-3deg);">
+                    <div style="font-weight: bold; font-size: 0.8rem; margin-bottom: 5px;"><i class="fas fa-file-signature" style="color:green"></i> Doc Reviewed</div>
+                    <div style="font-size: 0.7rem; color: #666;">"Excellent description of patient care..."</div>
+                    <div style="background:#eee; height: 6px; width: 100%; border-radius: 4px; margin-top:5px;">
+                        <div style="background:var(--secondary-cyan); width: 100%; height: 100%; border-radius: 4px;"></div>
+                    </div>
+                </div>
+                <div class="ui-float" style="bottom: 40px; right: 30px; transform: rotate(2deg);">
+                    <div style="display:flex; gap: 10px; align-items: center;">
+                        <div style="background:var(--secondary-brown); width:35px; height:35px; border-radius:50%; color:white; display:flex; align-items:center; justify-content:center;"><i class="fas fa-graduation-cap"></i></div>
+                        <div style="font-size: 0.8rem;"><strong>Admissions Ready</strong><br>Application Optimized</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support-section">
+        <div class="container feature-grid">
+            <div class="support-img">
+                <div class="icon-stack">
+                    <div class="stack-icon"><i class="fas fa-piggy-bank"></i></div>
+                    <div class="stack-icon" style="background: var(--secondary-cyan); color: white;"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <div class="stack-icon"><i class="fas fa-check"></i></div>
+                </div>
+            </div>
+            <div class="feature-text">
+                <h2>Why bundle and save?</h2>
+                <p style="margin-bottom: 25px;">Buying the CCMA course and editing services separately costs $3,050. Our bundle price is $2,650, saving you money for your grad school application fees.</p>
+                
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--secondary-brown);"><i class="fas fa-percent"></i></div>
+                    <div>
+                        <h4>$200 Instant Savings</h4>
+                        <p style="font-size: 0.9rem;">Get the full CCMA training program plus the complete Resume, Cover Letter, and Personal Statement editing suite.</p>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon" style="background-color: var(--secondary-brown);"><i class="fas fa-calendar-alt"></i></div>
+                    <div>
+                        <h4>Flexible Payment Plans</h4>
+                        <p style="font-size: 0.9rem;">Start today for as little as $700/month. We offer 2-month and 4-month installment plans to fit your budget.</p>
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-cyan">See Payment Options</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>From CCMA to Med School</h2>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="quote-box"><i class="fas fa-quote-left"></i></div>
+                    <p>"I had the clinical hours from my MA job, but my essay was weak. The editing team turned my scattered thoughts into a winning personal statement."</p>
+                    <p style="margin-top: 20px; font-weight: bold; color: var(--secondary-cyan);">— Michael T., Med Student</p>
+                </div>
+                <div class="testi-card">
+                    <div class="quote-box"><i class="fas fa-quote-left"></i></div>
+                    <p>"This bundle is a no-brainer. You get the certification to get the job, and the help to describe that job to admissions committees."</p>
+                    <p style="margin-top: 20px; font-weight: bold; color: var(--secondary-cyan);">— Sarah W., Pre-PA</p>
+                </div>
+                <div class="testi-card">
+                    <div class="quote-box"><i class="fas fa-quote-left"></i></div>
+                    <p>"The resume feedback was so specific to healthcare. They told me exactly which clinical skills to highlight from my externship."</p>
+                    <p style="margin-top: 20px; font-weight: bold; color: var(--secondary-cyan);">— James L., Applicant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="diagram-section">
+        <div class="container diagram-container">
+            <div class="diagram-text">
+                <h2>Your Roadmap to Acceptance</h2>
+                <p>1. Enroll & Train (CCMA) -> 2. Externship & Work -> 3. Submit Docs for Editing -> 4. Apply with Confidence.</p>
+                <a href="#" class="btn btn-cyan" style="margin-top: 20px;">View Full Roadmap</a>
+            </div>
+            <div class="diagram-graphic">
+                </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="enroll">
+        <div class="container">
+            <div class="form-layout">
+                <div class="form-content">
+                    <h2>Request Bundle Guide</h2>
+                    <p>Get the CCMA syllabus and details on how the document submission and editing process works. Start your journey to acceptance today.</p>
+                </div>
+                <div class="hcc-form">
+                    <form>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <input type="text" placeholder="First Name">
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <input type="email" placeholder="Email Address">
+                        <select>
+                            <option>Interest: CCMA + Editing Bundle</option>
+                            <option>CCMA Only</option>
+                            <option>Editing Services Only</option>
+                        </select>
+                        <button type="button" class="btn btn-cyan" style="width: 100%;">Get Info Packet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-heartbeat"></i> HealthCareerCerts</p>
+            <p style="opacity: 0.7; margin-top: 10px;">&copy; 2025 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
