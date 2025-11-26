@@ -4,8 +4,8 @@
   "description": "Health Career Certifications Website",
   "scripts": {
     "dev": "npx serve HCCERTS -l 5173",
-    "build": "echo 'Static site - no build needed'",
-    "preview": "npx serve HCCERTS -l 5173"
+    "build": "rm -rf dist && cp -r HCCERTS dist",
+    "preview": "npx serve dist -l 5173"
   },
   "keywords": [],
   "author": "",
